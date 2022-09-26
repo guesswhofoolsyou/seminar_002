@@ -15,21 +15,32 @@ return result;
 
 int SecondDigit(int number)
 {
-int firstDigit = number % 100;
-int secondDigit = firstDigit / 10;
+    int firstDigit = number % 100;
+    int secondDigit = firstDigit / 10;
 
-return secondDigit;
+    return secondDigit;
 }
 
-int GetNumber ()
+int ReadData(string line)
 {
-Console.WriteLine("Введите числа");
-string firstNumberStr = Console.ReadLine();
-int firstNumber = int.Parse(firstNumberStr);
-return firstNumber;
+    Console.WriteLine(line);
+    int inputNumber = int.Parse(Console.ReadLine() ?? "");
+    return inputNumber;
 }
 
-int number = GetNumber();
+void PrintData(string prefix, string value)
+{
+    Console.WriteLine(prefix + value);
+}
 
-int secondDigit = SecondDigit(number);
-Console.WriteLine(secondDigit);
+int number = ReadData("Введите число:");
+
+if (number<100)
+{
+    Console.WriteLine("Введенное неверное число!");    
+}
+else
+{
+    int secondDigit = SecondDigit(number);
+PrintData("Ваше число: ", secondDigit.ToString());
+}
